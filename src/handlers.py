@@ -15,6 +15,21 @@ class TaskStates(StatesGroup):
     waiting_for_done_id = State()
     waiting_for_delete_id = State()
 
+# --- /help ---
+@router.message(Command("help"))
+async def cmd_help(message: Message):
+    await message.answer(
+        "📖 Доступные команды:\n"
+        "\n"
+        "/start — начать работу\n"
+        "/help — показать это меню\n"
+        "/add — добавить новую задачу\n"
+        "/tasks — показать список задач\n"
+        "/done — отметить задачу как выполненную\n"
+        "/delete — удалить задачу\n"
+        "/stats — посмотреть статистику"
+    )
+
 # --- /start ---
 @router.message(Command("start"))
 async def cmd_start(message: Message):
